@@ -16,8 +16,9 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create micropost" do
+    user = users(:one)  # 既存のユーザーを取得
     assert_difference("Micropost.count") do
-      post microposts_url, params: { micropost: { content: @micropost.content, user_id: @micropost.user_id } }
+      post microposts_url, params: { micropost: { content: @micropost.content, user_id: user.id } }
     end
 
     assert_redirected_to micropost_url(Micropost.last)
