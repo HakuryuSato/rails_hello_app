@@ -5,23 +5,24 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     @base_title = "Ruby on Rails Tutorial Sample App"
   end
 
-  test "should get home" do
-    get static_pages_home_url
+  # root ルーティングテスト
+  test "should get root" do
+    get send("static_pages_home_url")
     assert_response :success
-    assert_select "title", "Home | #{@base_title}"
   end
 
-  test "should get help" do
-    get static_pages_help_url
-    assert_response :success
-    assert_select "title", "Help | #{@base_title}"
-  end
 
-  test "should get abount" do
-    get static_pages_about_url
-    assert_response :success
-    assert_select "title", "About | #{@base_title}"
+  # 各種ルーティングテスト
+  {
+    home: "Home",
+    help: "Help",
+    about: "About",
+    contact: "Contact"
+  }.each do |action, title|
+    define_method("test_should_get_#{action}") do
+      get send("static_pages_#{action}_url")
+      assert_response :success
+      assert_select "title", "#{title} | #{@base_title}"
+    end
   end
-
-    
 end
