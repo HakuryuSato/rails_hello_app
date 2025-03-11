@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     get "/#{page}", to: "static_pages##{page}"
   end
 
+  # 5章 users
+  get  "/signup",  to: "users#new"
+
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
 end
