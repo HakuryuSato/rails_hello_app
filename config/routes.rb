@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # ルート
   root "static_pages#home"
 
   # 1章
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
   # 3章 static_pages
   %w[home help about contact].each do |page|
-    get "static_pages/#{page}", to: "static_pages##{page}"
+    get "/#{page}", to: "static_pages##{page}"
   end
 
   # ヘルスチェック
