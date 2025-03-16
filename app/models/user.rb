@@ -6,5 +6,8 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: true
-    has_secure_password
+    has_secure_password validations: true
+    
+    # Skip password validation if password_digest is already set (for fixtures)
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 end
