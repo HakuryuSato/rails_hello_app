@@ -1,6 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
+<%= @user.created_at %>, 
+<%= @user.updated_at %>
+<%= Time.now %>
+
+<% provide(:title, @user.name) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
