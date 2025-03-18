@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   end
 
   # 5章 users
-  get  "/signup",  to: "users#new"
+  get "/signup",  to: "users#new"
+
+  # 8章 セッション
+  get    "/login",   to: "sessions#new"
+  post   "/login",   to: "sessions#create"
+  delete "/logout",  to: "sessions#destroy"
 
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
