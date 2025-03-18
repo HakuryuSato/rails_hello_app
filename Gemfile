@@ -70,3 +70,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+group :production do
+  gem "pg", "1.3.5"
+  gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+end
