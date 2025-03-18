@@ -20,6 +20,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "bcrypt", "3.1.18"
+# Bootstrap for styling
+gem "bootstrap", "~> 5.3.2"
+gem "sassc-rails"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -66,4 +69,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+
+group :production do
+  gem "pg", "1.3.5"
+  gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
