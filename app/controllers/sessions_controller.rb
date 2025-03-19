@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to login_path
     else
       # エラーメッセージを作成する
-      flash.now[:alert] = "エラーです"
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new', status: :unprocessable_entity
     end
   end
