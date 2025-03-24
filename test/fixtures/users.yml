@@ -9,3 +9,8 @@ two:
   name: MyString2
   email: ccc@ddd.com
   password_digest: <%= BCrypt::Password.create('password') %>
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
