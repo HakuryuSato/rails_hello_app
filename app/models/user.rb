@@ -7,7 +7,14 @@ class User < ApplicationRecord
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: true
     has_secure_password validations: true
-    
+
     # Skip password validation if password_digest is already set (for fixtures)
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+    
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
