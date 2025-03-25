@@ -21,7 +21,7 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "bcrypt", "3.1.18"
+gem "bcrypt", "3.1.20"
 gem "jbuilder"
 # Bootstrap for styling
 gem "bootstrap", "~> 5.3.2"
