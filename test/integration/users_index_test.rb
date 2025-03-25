@@ -4,6 +4,14 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   def setup
     @admin     = users(:michael)
     @non_admin = users(:archer)
+    30.times do |n|
+      User.create!(
+        name: "User #{n}",
+        email: "user-#{n}@example.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+    end
   end
 
   test "index as admin including pagination and delete links" do

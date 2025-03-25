@@ -50,7 +50,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "faker", "2.21.0"
-gem "will_paginate",           "3.3.1"
+gem "will_paginate", "3.3.1"
 gem "bootstrap-will_paginate", "1.0.0"
 
 group :development, :test do
