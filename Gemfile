@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Specify psych version to avoid native extension issues
+gem "fiddle" # Required for Ruby 3.5.0 compatibility
 gem "psych", "~> 4.0.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -18,8 +21,8 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
 gem "bcrypt", "3.1.18"
+gem "jbuilder"
 # Bootstrap for styling
 gem "bootstrap", "~> 5.3.2"
 gem "sassc-rails"
@@ -30,9 +33,9 @@ gem "sassc-rails"
 gem "tzinfo-data"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
-gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -45,6 +48,10 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+gem "faker", "2.21.0"
+gem "will_paginate", "3.3.1"
+gem "bootstrap-will_paginate", "1.0.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -69,10 +76,4 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-end
-
-
-group :production do
-  gem "pg"
-  gem "tzinfo-data", platforms: [ :mingw, :mswin, :x64_mingw, :jruby ]
 end

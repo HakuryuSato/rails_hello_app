@@ -6,3 +6,6 @@
 
 // Link stylesheets
 //= link application.css
+
+// Link JavaScript
+//= link_tree ../../javascript

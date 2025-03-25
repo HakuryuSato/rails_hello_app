@@ -4,8 +4,21 @@ one:
   name: MyString1
   email: aaa@bbb.com
   password_digest: <%= BCrypt::Password.create('password') %>
+  admin: true
 
 two:
   name: MyString2
   email: ccc@ddd.com
   password_digest: <%= BCrypt::Password.create('password') %>
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: false
