@@ -39,11 +39,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy!
-    respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url, status: :see_other
   end
 
   private
