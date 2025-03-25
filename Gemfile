@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 # Specify psych version to avoid native extension issues
 gem "fiddle" # Required for Ruby 3.5.0 compatibility
-gem "psych", "~> 4.0.6"
+gem "psych", "~> 5.2.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
