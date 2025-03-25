@@ -18,9 +18,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
-  # POST /users or /users.json
   def create
     @user = User.new(user_params)
     if @user.save
@@ -29,20 +29,20 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      render 'new', status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      # 更新に成功した場合を扱う
+    else
+      render "edit", status: :unprocessable_entity
     end
   end
 
