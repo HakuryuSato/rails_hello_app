@@ -4,6 +4,7 @@ one:
   name: MyString1
   email: aaa@bbb.com
   password_digest: <%= BCrypt::Password.create('password') %>
+  admin: true
 
 two:
   name: MyString2
