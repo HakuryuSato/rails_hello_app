@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [ :edit, :update ]
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
@@ -29,13 +29,13 @@ class UsersController < ApplicationController
 
       log_in @user
 
-      flash[:success] = 'Welcome to the Sample App!'
+      flash[:success] = "Welcome to the Sample App!"
 
       redirect_to @user
 
     else
 
-      render 'new', status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
 
     end
   end
@@ -44,10 +44,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      flash[:success] = 'Profile updated'
+      flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit', status: :unprocessable_entity
+      render "edit", status: :unprocessable_entity
     end
   end
 
@@ -55,11 +55,12 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_path, status: :see_other, notice: "User was successfully destroyed." }
 
       format.json { head :no_content }
     end
   end
+
 
   private
 
@@ -69,5 +70,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.expect(user: %i[name email password password_confirmation])
+  end
+
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url, status: :see_other
+    end
   end
 end
