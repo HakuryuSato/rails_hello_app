@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# ユーザーモデル
+# ユーザーの基本情報、認証、およびセッション管理を扱う
 class User < ApplicationRecord
   attr_accessor :remember_token
 
