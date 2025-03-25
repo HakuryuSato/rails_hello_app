@@ -33,8 +33,8 @@ class User < ApplicationRecord
   # 永続セッションのためのユーザーをデータベースに記憶する
   def remember
     self.remember_token = User.new_token
-
     update_attribute(:remember_digest, User.digest(remember_token))
+    remember_digest
   end
 
   # 渡されたトークンがダイジェストと一致したらtrueを返す
@@ -48,4 +48,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def session_token
+    remember_digest || remember
+  end
+  
 end
