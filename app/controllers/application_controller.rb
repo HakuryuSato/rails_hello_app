@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
@@ -5,10 +7,10 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def hello
-    render html: "hola, mundo!"
+    render html: 'hola, mundo!'
   end
 
   def goodbye
-    render html: "goodbye, world!"
+    render html: 'goodbye, world!'
   end
 end

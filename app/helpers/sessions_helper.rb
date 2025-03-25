@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   # 渡されたユーザーでログインする
   def log_in(user)
@@ -18,7 +20,7 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user&.authenticated?(cookies[:remember_token])
         log_in user
         @current_user = user
       end
@@ -32,9 +34,10 @@ module SessionsHelper
   # 現在のユーザーをログアウトする
   def log_out
     return unless logged_in?
+
     forget(current_user)
     reset_session
-    @current_user = nil   # 安全のため
+    @current_user = nil # 安全のため
   end
 
   # 永続的セッションを破棄する
